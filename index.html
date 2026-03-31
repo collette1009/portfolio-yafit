@@ -402,10 +402,10 @@
         </div>
       </div>
 
-      <!-- CASE 02 — VOC → Fail-soft UX → PO 협의 -->
+      <!-- CASE 02 — 환불·교환 의도 구조화 (JD01) -->
       <div class="case-card">
         <div class="case-card-header">
-          <div class="case-title">VOC 분석 → Fail-soft UX 설계 → PO 협의 — CS 인입 0건</div>
+          <div class="case-title">환불·교환 의도 구조화 — AS 재확인 왕복 95%+ 제거</div>
           <div class="case-badges">
             <span class="case-jd-tag">JD 01 · VOC → 서비스 개선</span>
             <span class="case-num-badge">CASE 02</span>
@@ -415,26 +415,26 @@
           <div class="case-col">
             <div class="case-col-label">Problem</div>
             <div class="case-col-text">
-              배송 가능일이 다른 상품을 함께 담으면 주문이 막히지만, 시스템이 왜 안 되는지 알려주지 않음. 고객은 단순 오류로 인식해 이탈하거나 CS로 전환. <strong>외부 API 제약으로 이상적인 예외 처리 구현도 어려운 상황.</strong>
+              AS 문의 고객의 환불·교환 의도가 자유 텍스트에 묻혀 CS가 매번 재확인해야 하는 구조. <strong>왕복 확인이 반복될수록 처리 리드타임이 늘고 데이터 정합성도 떨어지는 상황.</strong>
             </div>
           </div>
           <div class="case-col">
             <div class="case-col-label">What I Did</div>
             <div class="case-col-text">
               <ul>
-                <li>"완벽한 로직" 대신 <strong>API 응답으로 판단 가능한 조건</strong>만 기준으로 실패 유형 재정의</li>
-                <li>별도 페이지 이동 없이 <strong>장바구니 내에서 즉시 주문 불가 사유 안내</strong>하는 Fail-soft UX 설계</li>
-                <li>개발팀과 실행 가능한 스펙으로 합의 주도, CS 대응 기준도 함께 정리</li>
+                <li>반복 확인이 발생하는 구간 특정 → <strong>환불·교환 의도가 자유 텍스트에 묻히는 입력 구조</strong>가 원인임을 재정의</li>
+                <li>기존 CRM 중복 필드를 재구성해 <strong>요청 유형을 선택값으로 수집</strong>하도록 입력 구조 설계</li>
+                <li>직접 기획·요건 정의 → 개발팀 협의 → 구현 완료</li>
               </ul>
             </div>
           </div>
           <div class="case-outcome">
-            <div class="outcome-text">관련 CS 인입 건수<br><span style="color:var(--muted); font-weight:400; font-size:13px;">기술 제약 환경에서 PO·개발팀과 실행 가능한 개선안으로 합의</span></div>
-            <div class="outcome-num">주 2-3건 → 0건</div>
+            <div class="outcome-text">AS 재확인 왕복<br><span style="color:var(--muted); font-weight:400; font-size:13px;">직접 기획·요건 정의 → 구현 완료 · 처리 리드타임 단축</span></div>
+            <div class="outcome-num">95%+ 제거</div>
           </div>
         </div>
         <div class="case-footer">
-          <a class="case-link" href="https://www.notion.so/Case-3-Fail-soft-UX-22495f53ab8a814f99a3eceb6058c406" target="_blank">케이스 전체 보기 (노션)</a>
+          <a class="case-link" href="https://www.notion.so/Case-4-2b395f53ab8a80b1b605d2b053b459fe" target="_blank">케이스 전체 보기 (노션)</a>
         </div>
       </div>
 
@@ -498,10 +498,10 @@
 
       <div class="other-card">
         <div class="other-num">CASE 05</div>
-        <div class="other-title">환불·교환 의도 구조화 — AS 재확인 왕복 95%+ 제거</div>
-        <div class="other-desc">AS 문의 고객의 환불·교환 의도를 자유 텍스트에서 선택값으로 수집하도록 입력 구조 재설계. CRM 중복 필드 활용, 개발팀 협의로 신속 반영.</div>
-        <div class="other-result">→ AS 재확인 왕복 95%+ 제거. 직접 기획·요건 정의 → 구현 완료.</div>
-        <a class="other-link" href="https://www.notion.so/Case-4-2b395f53ab8a80b1b605d2b053b459fe" target="_blank">자세히 보기</a>
+        <div class="other-title">VOC 분석 → Fail-soft UX 설계 — CS 인입 주 2-3건 → 0건</div>
+        <div class="other-desc">배송 가능일 상이 상품 결합 시 주문 불가 VOC 분석. API 제약 조건 내 실패 유형 재정의 후 장바구니 내 즉시 안내하는 Fail-soft UX 설계. 개발팀과 실행 가능한 스펙으로 합의.</div>
+        <div class="other-result">→ 관련 CS 인입 주 2-3건 → 0건. 기술 제약 환경에서 PO·개발팀과 개선안 합의.</div>
+        <a class="other-link" href="https://www.notion.so/Case-3-Fail-soft-UX-22495f53ab8a814f99a3eceb6058c406" target="_blank">자세히 보기</a>
       </div>
 
       <div class="other-card">
