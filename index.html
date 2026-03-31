@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>오희은 | Biz Ops 운영 포트폴리오</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ─── TOKENS ─────────────────────────────── */
+    :root {
+      --green:       #00CC66;
+      --green-dk:    #00A352;
+      --green-bg:    #F0FFF8;
+      --green-tag:   #D6F5E8;
+      --dark:        #111827;
+      --body:        #374151;
+      --muted:       #6B7280;
+      --light:       #9CA3AF;
+      --border:      #E5E7EB;
+      --bg:          #F9FAFB;
+      --white:       #FFFFFF;
+      --num-size:    52px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      background: var(--white);
+      color: var(--body);
+      font-size: 14px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── LAYOUT ──────────────────────────────── */
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+
+    /* ─── TOPBAR ─────────────────────────────── */
+    .topbar {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      position: sticky; top: 0;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    .topbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topbar-name { font-size: 13px; font-weight: 700; color: var(--dark); letter-spacing: .5px; }
+    .topbar-contact { font-size: 12px; color: var(--muted); }
+    .topbar-contact a { color: var(--green-dk); text-decoration: none; font-weight: 500; }
+
+    /* ─── HERO ───────────────────────────────── */
+    .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--green-dk); margin-bottom: 20px;
+    }
+    .hero-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); display: inline-block; }
+    .hero h1 {
+      font-size: 48px; font-weight: 800; color: var(--dark);
+      letter-spacing: -2px; line-height: 1.05; margin-bottom: 10px;
+    }
+    .hero-sub {
+      font-size: 17px; color: var(--muted); font-weight: 400; margin-bottom: 28px;
+    }
+    .hero-desc {
+      font-size: 15px; color: var(--body); line-height: 1.9;
+      max-width: 620px; margin-bottom: 36px;
+      border-left: 3px solid var(--green); padding-left: 18px;
+    }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+    .chip {
+      font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 20px;
+      background: var(--green-bg); color: var(--green-dk);
+      border: 1px solid var(--green-tag);
+    }
+
+    /* ─── KEY NUMBERS ────────────────────────── */
+    .numbers { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; margin-top: 8px; }
+    .number-item { background: var(--white); padding: 24px 20px; }
+    .number-val {
+      font-size: var(--num-size); font-weight: 800; color: var(--green);
+      line-height: 1; letter-spacing: -2px;
+    }
+    .number-label { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+    /* ─── JD MAP BANNER ──────────────────────── */
+    .jdmap {
+      margin: 0; padding: 0;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+    }
+    .jdmap-inner {
+      padding: 40px 0;
+    }
+    .jdmap-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--green-dk); margin-bottom: 16px;
+    }
+    .jdmap-title {
+      font-size: 18px; font-weight: 800; color: var(--dark); margin-bottom: 20px;
+    }
+    .jdmap-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    .jdmap-item {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 18px 20px;
+    }
+    .jdmap-jd {
+      font-size: 11px; font-weight: 700; color: var(--light);
+      letter-spacing: 1px; margin-bottom: 8px; text-transform: uppercase;
+    }
+    .jdmap-jd-text {
+      font-size: 12.5px; font-weight: 600; color: var(--muted);
+      margin-bottom: 10px; line-height: 1.5;
+    }
+    .jdmap-arrow {
+      color: var(--green); font-size: 14px; font-weight: 700;
+      margin: 8px 0; display: block;
+    }
+    .jdmap-my {
+      font-size: 13px; font-weight: 700; color: var(--dark); line-height: 1.5;
+    }
+
+    /* ─── SECTION ────────────────────────────── */
+    .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+    .sec-head { margin-bottom: 40px; }
+    .sec-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--green-dk); margin-bottom: 8px;
+    }
+    .sec-title { font-size: 24px; font-weight: 800; color: var(--dark); line-height: 1.2; }
+    .sec-desc { font-size: 14px; color: var(--muted); margin-top: 8px; }
+
+    /* ─── SELECTED CASE CARDS ────────────────── */
+    .selected-cases { display: flex; flex-direction: column; gap: 24px; }
+    .case-card {
+      border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; background: var(--white);
+      transition: box-shadow .2s;
+    }
+    .case-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,.07); }
+    .case-card-header {
+      padding: 28px 32px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+    }
+    .case-num-badge {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.5px;
+      color: var(--green-dk); background: var(--green-bg);
+      border: 1px solid var(--green-tag);
+      padding: 4px 10px; border-radius: 20px; white-space: nowrap;
+    }
+    .case-jd-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      color: var(--muted); background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 3px 10px; border-radius: 20px; white-space: nowrap;
+    }
+    .case-badges { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+    .case-title { font-size: 18px; font-weight: 700; color: var(--dark); line-height: 1.35; flex: 1; }
+    .case-body { padding: 24px 32px 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .case-col {}
+    .case-col-label {
+      font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--light); margin-bottom: 8px;
+    }
+    .case-col-text { font-size: 13.5px; color: var(--body); line-height: 1.75; }
+    .case-col-text ul { padding-left: 16px; }
+    .case-col-text li { margin-bottom: 4px; }
+    .case-outcome {
+      grid-column: 1 / -1;
+      background: var(--green-bg); border: 1px solid var(--green-tag);
+      border-radius: 8px; padding: 16px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .outcome-text { font-size: 14px; font-weight: 600; color: var(--dark); }
+    .outcome-num { font-size: 28px; font-weight: 800; color: var(--green); line-height: 1; letter-spacing: -1px; white-space: nowrap; }
+    .case-footer {
+      padding: 16px 32px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: flex-end;
+    }
+    .case-link {
+      font-size: 12px; font-weight: 600; color: var(--green-dk);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+      transition: gap .15s;
+    }
+    .case-link:hover { gap: 8px; }
+    .case-link::after { content: '→'; }
+
+    /* ─── OTHER CASES ────────────────────────── */
+    .other-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .other-card {
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 22px 24px;
+      background: var(--white);
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .other-card:hover { border-color: var(--green); box-shadow: 0 2px 12px rgba(0,204,102,.08); }
+    .other-num { font-size: 11px; font-weight: 700; color: var(--light); letter-spacing: 1px; margin-bottom: 8px; }
+    .other-title { font-size: 14px; font-weight: 700; color: var(--dark); line-height: 1.4; margin-bottom: 8px; }
+    .other-desc { font-size: 12.5px; color: var(--muted); line-height: 1.7; margin-bottom: 12px; }
+    .other-result { font-size: 12px; font-weight: 600; color: var(--green-dk); }
+    .other-link {
+      display: inline-flex; align-items: center; gap: 3px;
+      margin-top: 12px; font-size: 11.5px; font-weight: 600;
+      color: var(--light); text-decoration: none;
+      transition: color .15s;
+    }
+    .other-link:hover { color: var(--green-dk); }
+    .other-link::after { content: ' →'; }
+
+    /* ─── SKILLS ─────────────────────────────── */
+    .skills-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    .skill-card {
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 22px 24px; background: var(--white);
+    }
+    .skill-name {
+      font-size: 13px; font-weight: 700; color: var(--dark);
+      margin-bottom: 12px; padding-bottom: 10px;
+      border-bottom: 2px solid var(--green-bg);
+    }
+    .skill-name span { color: var(--green); }
+    .skill-tags { font-size: 13px; color: var(--muted); line-height: 1.9; }
+
+    /* ─── CAREER ─────────────────────────────── */
+    .career-list { display: flex; flex-direction: column; }
+    .career-row {
+      display: grid; grid-template-columns: 180px 1fr;
+      gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border);
+    }
+    .career-row:last-child { border-bottom: none; }
+    .career-left {}
+    .career-company { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+    .career-period { font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+    .career-role { font-size: 12px; font-weight: 600; color: var(--green-dk); }
+    .career-desc { font-size: 13px; color: var(--body); line-height: 1.8; padding-top: 2px; }
+    .career-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .career-tag {
+      font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px;
+      background: var(--green-bg); color: var(--green-dk);
+      border: 1px solid var(--green-tag);
+    }
+
+    /* ─── FOOTER ─────────────────────────────── */
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border);
+      text-align: center; padding: 36px 32px; font-size: 12.5px; color: var(--muted);
+    }
+    footer a { color: var(--green-dk); text-decoration: none; font-weight: 500; }
+
+    /* ─── RESPONSIVE ─────────────────────────── */
+    @media (max-width: 680px) {
+      .hero h1 { font-size: 36px; }
+      .numbers { grid-template-columns: 1fr 1fr; }
+      .numbers .number-item:last-child { grid-column: 1/-1; }
+      .case-body { grid-template-columns: 1fr; }
+      .other-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .career-row { grid-template-columns: 1fr; gap: 8px; }
+      .case-card-header { flex-direction: column; }
+      .number-val { font-size: 40px; }
+      .jdmap-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="wrap">
+    <div class="topbar-inner">
+      <span class="topbar-name">오 희 은 · Biz Ops Portfolio</span>
+      <span class="topbar-contact">
+        <a href="mailto:gldms1009@naver.com">gldms1009@naver.com</a>
+        &nbsp;·&nbsp; 010-2357-2674
+      </span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow"><span class="hero-dot"></span>Biz Ops · 운영 구조 설계 · 정산 · 어뷰징 대응</div>
+    <h1>오 희 은</h1>
+    <p class="hero-sub">같은 문제가 반복되면 사람이 아니라 구조를 바꿉니다</p>
+    <p class="hero-desc">
+      VOC 분석 → PO 협의 → 서비스 개선, 파트너 정산 기준 재정의,<br>
+      <strong>어뷰징 탐지 및 대응 기준 수립까지</strong> — 운영 문제를 구조로 차단하고<br>
+      리스크를 통제해 왔습니다. 빠르게 성장하는 환경에서도<br>
+      운영이 멈추지 않도록 기준을 만들고 실행합니다.
+    </p>
+    <div class="hero-chips">
+      <span class="chip">BizOps</span>
+      <span class="chip">운영 구조 설계</span>
+      <span class="chip">VOC → 서비스 개선</span>
+      <span class="chip">정산 / 리스크 관리</span>
+      <span class="chip">어뷰징 대응 기준</span>
+      <span class="chip">마일리지·포인트 정책</span>
+      <span class="chip">자동화</span>
+    </div>
+    <div class="numbers">
+      <div class="number-item">
+        <div class="number-val">14.7배↑</div>
+        <div class="number-label">배상 회수율 개선<br>월 50만 → 700만 원+</div>
+      </div>
+      <div class="number-item">
+        <div class="number-val">95%+</div>
+        <div class="number-label">AS 재확인 왕복 제거<br>직접 기획·요건 정의</div>
+      </div>
+      <div class="number-item">
+        <div class="number-val">8→2</div>
+        <div class="number-label">운영 프로세스 축소<br>자동화 설계</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JD MAP -->
+<div class="jdmap">
+  <div class="wrap">
+    <div class="jdmap-inner">
+      <div class="jdmap-label">JD Match</div>
+      <div class="jdmap-title">야핏무브 Biz Ops 3대 업무 — 직접 대응 경험</div>
+      <div class="jdmap-grid">
+        <div class="jdmap-item">
+          <div class="jdmap-jd">JD 01</div>
+          <div class="jdmap-jd-text">VOC 분석 기반 운영 구조 개선 · PO·개발팀 서비스 개선 요청</div>
+          <span class="jdmap-arrow">↓</span>
+          <div class="jdmap-my">Fail-soft UX 설계 → CS 인입 주 2-3건 → 0건<br>환불·교환 의도 구조화 → AS 재확인 왕복 95%+ 제거</div>
+        </div>
+        <div class="jdmap-item">
+          <div class="jdmap-jd">JD 02</div>
+          <div class="jdmap-jd-text">파트너 정산 검증 · 어뷰징 모니터링 · 방어 정책 수립</div>
+          <span class="jdmap-arrow">↓</span>
+          <div class="jdmap-my">택배·물류 정산 기준 재정의 → 회수율 14.7배↑<br>외부 협력사 청구서 검증 · 환불·전도금 정산 실무<br>리셀러·다계정 패턴 탐지 → 대응 기준 수립 → 유관부서 협의</div>
+        </div>
+        <div class="jdmap-item">
+          <div class="jdmap-jd">JD 03</div>
+          <div class="jdmap-jd-text">도메인 오너십 · 운영 구조 구축 · 자동화 · 가이드 작성</div>
+          <span class="jdmap-arrow">↓</span>
+          <div class="jdmap-my">조직 변화 상황에서 운영 기준 정비·온보딩·자동화 단독 수행<br>반복 입력 8→2단계 축소 · 비개발 직군 중 AI 업무비 유일 승인</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SELECTED CASES -->
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">Selected Cases</div>
+      <div class="sec-title">핵심 케이스 — 야핏무브 JD 직접 대응</div>
+    </div>
+    <div class="selected-cases">
+
+      <!-- CASE 01 — 정산·약관 기반 손실 구조화 -->
+      <div class="case-card">
+        <div class="case-card-header">
+          <div class="case-title">외부 파트너 책임 구조 재정의 — 배상 회수율 14.7배 개선</div>
+          <div class="case-badges">
+            <span class="case-jd-tag">JD 02 · 정산 실무</span>
+            <span class="case-num-badge">CASE 01</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-col">
+            <div class="case-col-label">Problem</div>
+            <div class="case-col-text">
+              택배사·물류 파트너 전환 과정에서 회수·사진 증빙 중심의 복잡한 절차 때문에 보상 처리가 계속 밀림. <strong>파트너 회신을 기다리는 동안 손실이 그대로 묻히는 구조.</strong>
+            </div>
+          </div>
+          <div class="case-col">
+            <div class="case-col-label">What I Did</div>
+            <div class="case-col-text">
+              <ul>
+                <li>택배 표준약관 직접 검토 → 파손 시 <strong>택배사 선통보 의무</strong>를 근거로 협상 주도권 전환</li>
+                <li>물류계약서 직접 분석 → 계약서상 파트너 귀책 피해는 <strong>택배사 배상 승인 없이 월 물류비에서 직접 차감 가능</strong>함을 발견, 정산 기준으로 정리</li>
+                <li>손실 유형별 비용 기준 정리 → 정산 협상에 바로 활용 가능한 자료로 전환</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-outcome">
+            <div class="outcome-text">월 배상 회수액<br><span style="color:var(--muted); font-weight:400; font-size:13px;">약 50만 원 → 700만 원 이상 · 파트너 회신 무관하게 통제 가능</span></div>
+            <div class="outcome-num">14.7배↑</div>
+          </div>
+        </div>
+        <div class="case-footer">
+          <a class="case-link" href="https://www.notion.so/Case-7-32395f53ab8a800d9403d826419f8c1e" target="_blank">케이스 전체 보기 (노션)</a>
+        </div>
+      </div>
+
+      <!-- CASE 02 — VOC → Fail-soft UX → PO 협의 -->
+      <div class="case-card">
+        <div class="case-card-header">
+          <div class="case-title">VOC 분석 → Fail-soft UX 설계 → PO 협의 — CS 인입 0건</div>
+          <div class="case-badges">
+            <span class="case-jd-tag">JD 01 · VOC → 서비스 개선</span>
+            <span class="case-num-badge">CASE 02</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-col">
+            <div class="case-col-label">Problem</div>
+            <div class="case-col-text">
+              배송 가능일이 다른 상품을 함께 담으면 주문이 막히지만, 시스템이 왜 안 되는지 알려주지 않음. 고객은 단순 오류로 인식해 이탈하거나 CS로 전환. <strong>외부 API 제약으로 이상적인 예외 처리 구현도 어려운 상황.</strong>
+            </div>
+          </div>
+          <div class="case-col">
+            <div class="case-col-label">What I Did</div>
+            <div class="case-col-text">
+              <ul>
+                <li>"완벽한 로직" 대신 <strong>API 응답으로 판단 가능한 조건</strong>만 기준으로 실패 유형 재정의</li>
+                <li>별도 페이지 이동 없이 <strong>장바구니 내에서 즉시 주문 불가 사유 안내</strong>하는 Fail-soft UX 설계</li>
+                <li>개발팀과 실행 가능한 스펙으로 합의 주도, CS 대응 기준도 함께 정리</li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-outcome">
+            <div class="outcome-text">관련 CS 인입 건수<br><span style="color:var(--muted); font-weight:400; font-size:13px;">기술 제약 환경에서 PO·개발팀과 실행 가능한 개선안으로 합의</span></div>
+            <div class="outcome-num">주 2-3건 → 0건</div>
+          </div>
+        </div>
+        <div class="case-footer">
+          <a class="case-link" href="https://www.notion.so/Case-3-Fail-soft-UX-22495f53ab8a814f99a3eceb6058c406" target="_blank">케이스 전체 보기 (노션)</a>
+        </div>
+      </div>
+
+      <!-- CASE 03 — 반복 입력 자동화 (JD03) -->
+      <div class="case-card">
+        <div class="case-card-header">
+          <div class="case-title">반복 입력 자동화 설계 — 운영 프로세스 8단계 → 2단계</div>
+          <div class="case-badges">
+            <span class="case-jd-tag">JD 03 · 자동화 · 도메인 오너십</span>
+            <span class="case-num-badge">CASE 03</span>
+          </div>
+        </div>
+        <div class="case-body">
+          <div class="case-col">
+            <div class="case-col-label">Problem</div>
+            <div class="case-col-text">
+              대량 취소·반품 처리 시 반복 입력 구간이 많고 귀책 분류 오류가 반복됨. <strong>수작업 8단계에 의존하는 구조라 처리 속도도 느리고 데이터 정합성도 떨어지는 상황.</strong>
+            </div>
+          </div>
+          <div class="case-col">
+            <div class="case-col-label">What I Did</div>
+            <div class="case-col-text">
+              <ul>
+                <li>반복 구간을 처리 흐름별로 분해해 <strong>자동화 가능한 단위를 직접 정의</strong></li>
+                <li>Chrome Extension 기반 자동화 설계 — 코드 없이 반복 입력·귀책 분류를 처리하는 구조로 구현</li>
+                <li>수동 검수 병행 구조 설계로 <strong>오류 통제와 속도 개선을 동시에 확보</strong></li>
+              </ul>
+            </div>
+          </div>
+          <div class="case-outcome">
+            <div class="outcome-text">운영 프로세스 단계 수<br><span style="color:var(--muted); font-weight:400; font-size:13px;">비개발 직군 중 AI 업무비 유일 승인 · 입력 오류·분류 실수 감소</span></div>
+            <div class="outcome-num">8→2단계</div>
+          </div>
+        </div>
+        <div class="case-footer">
+          <a class="case-link" href="https://www.notion.so/Case-6-31795f53ab8a802d83f9effd47edcca5" target="_blank">케이스 전체 보기 (노션)</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OTHER CASES -->
+<section class="section" style="background: var(--bg);">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">All Cases</div>
+      <div class="sec-title">추가 케이스</div>
+      <div class="sec-desc">주요 케이스는 노션에서 상세 확인 가능합니다 (일부 민감 케이스 제외)</div>
+    </div>
+    <div class="other-grid">
+
+      <div class="other-card">
+        <div class="other-num">CASE 04</div>
+        <div class="other-title">프로모션 조건 오인 VOC 구조화 → 행동 시점 UX 개선 요건 정의</div>
+        <div class="other-desc">1+1/2+1 프로모션 VOC 총 173건을 채널·행동 흐름별로 재분류. 핵심 원인을 '행동 시점 피드백 부재'로 재정의, 조건 미충족 시 즉시 안내하는 검증 로직을 설계해 이커머스 리드와 개선 방향 협의.</div>
+        <div class="other-result">→ VOC 패턴 유형화 · 검증 로직 설계 · 이커머스 리드 협의.</div>
+        <a class="other-link" href="https://www.notion.so/27e95f53ab8a80f9961cf839293a7541" target="_blank">자세히 보기</a>
+      </div>
+
+      <div class="other-card">
+        <div class="other-num">CASE 05</div>
+        <div class="other-title">환불·교환 의도 구조화 — AS 재확인 왕복 95%+ 제거</div>
+        <div class="other-desc">AS 문의 고객의 환불·교환 의도를 자유 텍스트에서 선택값으로 수집하도록 입력 구조 재설계. CRM 중복 필드 활용, 개발팀 협의로 신속 반영.</div>
+        <div class="other-result">→ AS 재확인 왕복 95%+ 제거. 직접 기획·요건 정의 → 구현 완료.</div>
+        <a class="other-link" href="https://www.notion.so/Case-4-2b395f53ab8a80b1b605d2b053b459fe" target="_blank">자세히 보기</a>
+      </div>
+
+      <div class="other-card">
+        <div class="other-num">CASE 06</div>
+        <div class="other-title">CRM 상태값 라이프사이클 재설계 — 문의 누락 구조 제거</div>
+        <div class="other-desc">답변 저장 즉시 처리완료로 전환되는 구조로 추가 확인 필요 문의가 누락. 저장과 완료 분리, 중간 '처리중' 상태값 추가.</div>
+        <div class="other-result">→ 추가 확인 필요 문의 누락 0건. 처리 상태와 시스템 상태 불일치 해소.</div>
+        <a class="other-link" href="https://www.notion.so/Case-2-CRM-27295f53ab8a80dab4f2ed2a42039d74" target="_blank">자세히 보기</a>
+      </div>
+
+      <div class="other-card">
+        <div class="other-num">CASE 07</div>
+        <div class="other-title">리셀러·다계정 어뷰징 탐지 및 대응 기준 수립</div>
+        <div class="other-desc">주문 패턴 데이터 분석으로 어뷰징 의심 계정을 독립 탐지. 내부 판단 기준 구체화 → 차단·유지·해제 방향 협의 → 지속 모니터링 체계 수립.</div>
+        <div class="other-result">→ 재사용 가능한 판단 기준 문서화 · 모니터링 체계 구축 · 서비스 건전성 관리 기여.</div>
+        <span style="font-size:11px; color:var(--muted);">* 민감 정보 — 면접 시 상세 공유 가능</span>
+      </div>
+
+      <div class="other-card">
+        <div class="other-num">CASE 08</div>
+        <div class="other-title">민감 이슈 확산 방지 및 전사 커뮤니케이션 정렬</div>
+        <div class="other-desc">과거 품질 이슈가 기사로 재점화됨. 팩트·루머 분리, 질문 유형별 조건부 대응 로직 설계, CEO 승인 기반 전사 가이드 배포.</div>
+        <div class="other-result">→ 인지 후 1시간 내 매장·CS 전사 배포 완료.</div>
+        <a class="other-link" href="https://www.notion.so/Case-5-2ab95f53ab8a8033a3f7ed5984a24d1f" target="_blank">자세히 보기</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  오희은 &nbsp;·&nbsp; <a href="mailto:gldms1009@naver.com">gldms1009@naver.com</a> &nbsp;·&nbsp; 010-2357-2674
+</footer>
+
+</body>
+</html>
